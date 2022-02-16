@@ -1,38 +1,20 @@
 name: medulla-deploy
 services:
-  - name: minio
-    image: minio/minio
-    args: server /data --console-address ":9001"
-    bindings:
-      - name: minio0
-        port: 9000
-        protocol: tcp
-      - name: minio1
-        port: 9001
-        protocol: tcp
-
-  - name: deployer
+  - name: redirect-service
     dockerFile: ./Dockerfile
     env:
-    - name: S3_DEPLOY_BUCKET_NAME
-      value: "minio_compiled"
-    - name: S3_DEPLOY_FILE_NAME
-      value: "release.bundle"
+    - name: S3_BUCKET_FOLDER
+      value: "[folder]"
     - name: MINIO_ENDPOINT
-      value: "minio"
+      value: "[endpoint]"
     - name: MINIO_ACCESS_KEY
-      value: "test"
+      value: "[access-key]"
     - name: MINIO_SECRET_ACCESS_KEY
-      value: "test"
-    - name: MINIO_S3_ENDPOINT
-      value: "minio"
-    - name: MINIO_S3_ACCESS_KEY_ID
-      value: "test"
-    - name: MINIO_S3_SECRET_ACCESS_KEY
-      value: "test"
+      value: "[secret-access-key]"
     bindings:
-    - port: 8080
+    - port: 8086
       protocol: http
+      containerPort: 8080
 
 
 

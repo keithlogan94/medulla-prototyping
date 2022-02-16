@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-var bucketName = os.Getenv("S3_DEPLOY_BUCKET_NAME")
+var s3BucketFolder = os.Getenv("S3_BUCKET_FOLDER")
 
 func initMinioS3Client() *minio.Client {
 
@@ -44,10 +44,10 @@ func CreatePresignedUrl(objectName string) (presignedUrlStr string, err error) {
 		log.Fatalln(err)
 	}
 	urlValues := url.Values{}
-	presignedUrl, err := s3Client.PresignedGetObject(context.Background(), bucketName, objectName, duration, urlValues)
+	presignedUrl, err := s3Client.PresignedGetObject(context.Background(), s3BucketFolder, objectName, duration, urlValues)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	var presignedUrlString = presignedUrl.Scheme + "://" + presignedUrl.Host + "/" + bucketName + "/" + objectName + "?" + presignedUrl.RawQuery
+	var presignedUrlString = presignedUrl.Scheme + "://" + presignedUrl.Host + "/" + s3BucketFolder + "/" + objectName + "?" + presignedUrl.RawQuery
 	return presignedUrlString, nil
 }
