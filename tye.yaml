@@ -4,15 +4,15 @@ services:
     dockerFile: ./Dockerfile
     env:
     - name: S3_BUCKET_FOLDER
-      value: "[folder]"
+      value: "test-minio-bucket1"
     - name: MINIO_ENDPOINT
-      value: "[endpoint]"
+      value: "test-minio-bucket1.s3.us-east-2.amazonaws.com"
     - name: MINIO_ACCESS_KEY
-      value: "[access-key]"
+      value: "AKIAVMHBWCQTSUHYJNEN"
     - name: MINIO_SECRET_ACCESS_KEY
-      value: "[secret-access-key]"
+      value: "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"
     bindings:
-    - port: 8086
+    - port: 8088
       protocol: http
       containerPort: 8080
 

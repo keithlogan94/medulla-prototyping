@@ -2,11 +2,23 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
-func redirect(w http.ResponseWriter, r *http.Request) {
+func Get(url string) string {
+	fmt.Println("Sending request to " + url)
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	return string(body)
+}
+
+func proxy(w http.ResponseWriter, r *http.Request) {
 	// check
 	switch r.Method {
 	case "GET":
@@ -24,11 +36,24 @@ func redirect(w http.ResponseWriter, r *http.Request) {
 		log.Fatalln(err)
 	}
 
-	http.Redirect(w, r, url, 301)
+	index := strings.LastIndex(r.URL.Path, "/")
+	fmt.Println("index is " + string(index))
+	var basename string = r.URL.Path[index+1:]
+	fmt.Println("basename: " + basename)
+	if basename == "index.html" {
+		w.Header().Set("Content-Type", "text/html")
+		w.Write([]byte(Get(url)))
+		return
+	} else {
+		// redirect every other url
+		http.Redirect(w, r, url, 301)
+	}
+
 }
 
 func Serve() {
-	http.HandleFunc("/", redirect)
+	fmt.Println("Running server version 1.03")
+	http.HandleFunc("/", proxy)
 
 	fmt.Printf("Starting server on port :8080\n")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
