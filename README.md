@@ -39,6 +39,8 @@ You should have all the info needed to fill out the `tye.yaml` file with your se
 
 Update the following env vars in the `tye.yaml` file
 
+`S3_BUCKET_FOLDER`
+
 `MINIO_ENDPOINT` 
 
 `MINIO_ACCESS_KEY`
@@ -48,10 +50,10 @@ Update the following env vars in the `tye.yaml` file
 ```
 - name: S3_BUCKET_FOLDER
   value: "[folder]"
-    - name: MINIO_ENDPOINT
-      value: "[endpoint]"
-    - name: MINIO_ACCESS_KEY
-      value: "[access-key]"
-    - name: MINIO_SECRET_ACCESS_KEY
-      value: "[secret-access-key]"
+- name: MINIO_ENDPOINT
+  value: "[endpoint]"
+- name: MINIO_ACCESS_KEY
+  value: "[access-key]"
+- name: MINIO_SECRET_ACCESS_KEY
+  value: "[secret-access-key]"
 ```
