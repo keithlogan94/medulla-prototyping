@@ -1,0 +1,1 @@
+docker run --name s3_server_proxy -v s3_conf_nginx.conf:/opt/bitnami/nginx/conf/server_blocks/ -it --rm -p 8080:8080 bitnami/nginx:latest
