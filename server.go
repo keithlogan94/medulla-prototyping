@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"mime"
 	"net/http"
+	"path/filepath"
 	"strings"
 )
 
@@ -16,6 +18,15 @@ func Get(url string) string {
 	}
 	body, err := ioutil.ReadAll(resp.Body)
 	return string(body)
+}
+
+func threadConnection(w http.ResponseWriter, r *http.Request) {
+	proxy(w, r)
+}
+
+func DetermineMimeType(filePath string) string {
+	fileExtension := filepath.Ext(filePath)
+	return mime.TypeByExtension(fileExtension)
 }
 
 func proxy(w http.ResponseWriter, r *http.Request) {
@@ -40,22 +51,14 @@ func proxy(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("index is " + string(index))
 	var basename string = r.URL.Path[index+1:]
 	fmt.Println("basename: " + basename)
-	var isCss bool = r.URL.Path[len(r.URL.Path)-4:] == ".css"
-	var isJs bool = r.URL.Path[len(r.URL.Path)-3:] == ".js"
-	if basename == "index.html" || basename == "blazor.boot.json" || isCss || isJs {
-		w.Header().Set("Content-Type", "text/html")
-		w.Write([]byte(Get(url)))
-		return
-	} else {
-		// redirect every other url
-		http.Redirect(w, r, url, 301)
-	}
-
+	w.Header().Set("Content-Type", DetermineMimeType(basename))
+	w.Write([]byte(Get(url)))
+	return
 }
 
 func Serve() {
 	fmt.Println("Running server version 1.03")
-	http.HandleFunc("/", proxy)
+	http.HandleFunc("/", threadConnection)
 
 	fmt.Printf("Starting server on port :8080\n")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
