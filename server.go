@@ -21,6 +21,7 @@ func Get(url string) string {
 }
 
 func threadConnection(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("handling request")
 	proxy(w, r)
 }
 
