@@ -1,0 +1,15 @@
+﻿---
+apiVersion: medulla.recro.com/v1beta1
+kind: Database
+metadata:
+  name: my-database-table
+spec:
+  databaseName: "my_db_table_name"
+---
+apiVersion: medulla.recro.com/v1beta1
+kind: Database
+metadata:
+  name: another-db-table
+spec:
+  databaseName: "another_db_table"
+---

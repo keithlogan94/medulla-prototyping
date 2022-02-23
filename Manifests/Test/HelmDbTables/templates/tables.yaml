@@ -1,0 +1,14 @@
+﻿apiVersion: medulla.recro.com/v1beta1
+kind: DatabaseTable
+metadata:
+  name: my-database-table
+spec:
+  databaseName: "my_db_table_name"
+  tableName: "test_table_name"
+  columns:
+    - name: "column_name"
+      dataType: "string"
+    - name: "another_column_name"
+      dataType: "string"
+    - name: "another_column_name_test"
+      dataType: "string"
