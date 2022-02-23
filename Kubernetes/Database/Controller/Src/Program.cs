@@ -11,11 +11,13 @@ namespace watch
     {
         private async static Task Main(string[] args)
         {
+            List<string> files;
             Console.WriteLine("Running Controller");
             var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
 
             IKubernetes client = new Kubernetes(config);
             var podlistResp = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
+            
             // C# 8 required https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8
             await foreach (var (type, item) in podlistResp.WatchAsync<V1Pod, V1PodList>())
             {

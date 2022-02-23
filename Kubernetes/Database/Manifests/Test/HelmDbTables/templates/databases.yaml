@@ -1,12 +1,12 @@
 ﻿---
-apiVersion: medulla.recro.com/v1beta1
+apiVersion: medulla.recro.com/v1alpha1
 kind: Database
 metadata:
   name: my-database-table
 spec:
   databaseName: "my_db_table_name"
 ---
-apiVersion: medulla.recro.com/v1beta1
+apiVersion: medulla.recro.com/v1alpha1
 kind: Database
 metadata:
   name: another-db-table
