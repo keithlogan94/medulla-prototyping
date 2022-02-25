@@ -60,7 +60,7 @@ namespace KubernetesUtils
         public static async Task<QueryCustomResource<Spec>> GetResources<Spec>(string plural)
         {
             var finder = new CustomKubernetesObjectFinder();
-            var str = await finder.FindObjects(plural);
+            var str = (await finder.FindObjects(plural)).ToString();
             QueryCustomResource<Spec>? obj =
                 JsonSerializer.Deserialize<QueryCustomResource<Spec>>(str);
             return obj;

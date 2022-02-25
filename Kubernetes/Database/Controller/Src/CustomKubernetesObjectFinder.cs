@@ -1,4 +1,5 @@
 ﻿using k8s;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,18 @@ namespace KubernetesUtils
     internal class CustomKubernetesObjectFinder
     {
 
-        public async Task<int> FindObjects(string plural)
+        public async Task<string> FindObjects(string plural)
         {
             Console.WriteLine("Running Controller");
-            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-            IKubernetes client = new Kubernetes(config);
-            var databaseListResp = await client.ListClusterCustomObjectAsync("medulla.recro.com", "v1beta1", plural, true);
-            Console.WriteLine(databaseListResp);
-            return 1;
+            IKubernetes client = new Kubernetes(KubernetesClientConfiguration.BuildConfigFromConfigFile());
+            return (await client
+                .ListClusterCustomObjectAsync(
+                "medulla.recro.com", 
+                "v1beta1", 
+                plural, 
+                true)
+                )
+                .ToString();
         }
 
 
