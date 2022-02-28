@@ -15,4 +15,12 @@ public class V1Alpha1DatabaseEntity : CustomKubernetesEntity
 {
     [Required]
     public string? Name { get; set; }
+    [Required]
+    public string? Host { get; set; }
+    [Required]
+    public string? Dialect { get; set; }
+    [Required]
+    public string? UsernameSecretName { get; set; }
+    [Required]
+    public string? PasswordSecretName { get; set; }
 }
