@@ -5,13 +5,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DatabaseControllerKubeOps.Controller.Entities;
 
-[Description("A CustomResourceDefinition which allows building a database table in Medulla.")]
-[KubernetesEntity(
-    ApiVersion = "v1alpha1",
-    Kind = "Database",
-    Group = "medulla.recro.com",
-    PluralName = "databases")]
-
 public class ValidateSpec
 {
     public string? Is { get; set; }
@@ -49,6 +42,13 @@ public class ColumnSpec
 
 }
 
+
+[Description("A CustomResourceDefinition which allows building a database table in Medulla.")]
+[KubernetesEntity(
+    ApiVersion = "v1alpha1",
+    Kind = "DatabaseTable",
+    Group = "medulla.recro.com",
+    PluralName = "databases")]
 public class V1Alpha1DatabaseTableEntity : CustomKubernetesEntity
 {
     [Required]
