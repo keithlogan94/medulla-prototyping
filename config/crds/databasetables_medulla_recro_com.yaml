@@ -1,0 +1,29 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: databasetables.medulla.recro.com
+spec:
+  group: medulla.recro.com
+  names:
+    kind: DatabaseTable
+    listKind: DatabaseTableList
+    plural: databasetables
+    singular: databasetable
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          name:
+            nullable: true
+            type: string
+          columns:
+            items:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+            nullable: true
+            type: array
+        type: object
+    served: true
+    storage: true

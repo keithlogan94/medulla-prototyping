@@ -19,8 +19,27 @@ spec:
           name:
             nullable: true
             type: string
+          host:
+            nullable: true
+            type: string
+          dialect:
+            nullable: true
+            type: string
+          usernameSecretName:
+            nullable: true
+            type: string
+          passwordSecretName:
+            nullable: true
+            type: string
+          test:
+            nullable: true
+            type: string
         required:
         - name
+        - host
+        - dialect
+        - usernameSecretName
+        - passwordSecretName
         type: object
     served: true
     storage: true

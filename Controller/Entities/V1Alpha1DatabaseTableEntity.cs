@@ -48,7 +48,7 @@ public class ColumnSpec
     ApiVersion = "v1alpha1",
     Kind = "DatabaseTable",
     Group = "medulla.recro.com",
-    PluralName = "databases")]
+    PluralName = "databasetables")]
 public class V1Alpha1DatabaseTableEntity : CustomKubernetesEntity
 {
     [Required]
