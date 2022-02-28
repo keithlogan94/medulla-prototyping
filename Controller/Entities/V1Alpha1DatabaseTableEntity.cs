@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DatabaseControllerKubeOps.Controller.Entities;
 
-public class ValidateSpec
+public struct ValidateSpec
 {
     public string? Is { get; set; }
     public string? Not { get; set; }
@@ -27,7 +27,7 @@ public class ValidateSpec
     public bool? NotEmpty { get; set; }
 }
 
-public class ColumnSpec
+public struct ColumnSpec
 {
     public string? ColumnName { get; set; }
     public string? Type { get; set; }
@@ -54,5 +54,5 @@ public class V1Alpha1DatabaseTableEntity : CustomKubernetesEntity
     [Required]
     public string? Name { get; set; }
     [Required]
-    public List<Dictionary<string, ColumnSpec>>? Columns { get; set; }
+    public List<ColumnSpec>? Columns { get; set; }
 }

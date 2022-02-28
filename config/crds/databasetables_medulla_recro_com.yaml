@@ -20,8 +20,95 @@ spec:
             type: string
           columns:
             items:
+              properties:
+                columnName:
+                  nullable: true
+                  type: string
+                type:
+                  nullable: true
+                  type: string
+                allowNull:
+                  type: boolean
+                defaultValue:
+                  nullable: true
+                  type: string
+                autoIncrement:
+                  type: boolean
+                primaryKey:
+                  type: boolean
+                field:
+                  nullable: true
+                  type: string
+                unique:
+                  nullable: true
+                  type: string
+                comment:
+                  nullable: true
+                  type: string
+                validate:
+                  nullable: true
+                  properties:
+                    hasValue:
+                      type: boolean
+                    value:
+                      properties:
+                        is:
+                          nullable: true
+                          type: string
+                        not:
+                          nullable: true
+                          type: string
+                        isEmail:
+                          nullable: true
+                          type: boolean
+                        isUrl:
+                          nullable: true
+                          type: boolean
+                        isIp:
+                          nullable: true
+                          type: boolean
+                        isIpV4:
+                          nullable: true
+                          type: boolean
+                        isIpV6:
+                          nullable: true
+                          type: boolean
+                        isAlpha:
+                          nullable: true
+                          type: boolean
+                        isAlphaNumeric:
+                          nullable: true
+                          type: boolean
+                        isNumeric:
+                          nullable: true
+                          type: boolean
+                        isInt:
+                          nullable: true
+                          type: boolean
+                        isFloat:
+                          nullable: true
+                          type: boolean
+                        isDecimal:
+                          nullable: true
+                          type: boolean
+                        isLowercase:
+                          nullable: true
+                          type: boolean
+                        isUppercase:
+                          nullable: true
+                          type: boolean
+                        isNull:
+                          nullable: true
+                          type: boolean
+                        notNull:
+                          nullable: true
+                          type: boolean
+                        notEmpty:
+                          nullable: true
+                          type: boolean
+                      type: object
+                  type: object
               type: object
-              x-kubernetes-preserve-unknown-fields: true
             nullable: true
             type: array
         type: object
