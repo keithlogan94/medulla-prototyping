@@ -13,26 +13,22 @@ public class DatabaseCtrl : IResourceController<V1Alpha1DatabaseEntity>
 
     public Task<ResourceControllerResult> CreatedAsync(V1Alpha1DatabaseEntity resource)
     {
-        //return Task.FromResult<ResourceControllerResult>(null); // This wont trigger a requeue.
-        return Task.FromResult(ResourceControllerResult.RequeueEvent(TimeSpan.FromSeconds(15))); // This will requeue the event in 15 seconds.
+        return Task.FromResult<ResourceControllerResult>(null);
     }
 
     public Task<ResourceControllerResult> ReconcileAsync(V1Alpha1DatabaseEntity resource)
     {
-        //return Task.FromResult<ResourceControllerResult>(null); // This wont trigger a requeue.
-        return Task.FromResult(ResourceControllerResult.RequeueEvent(TimeSpan.FromSeconds(15))); // This will requeue the event in 15 seconds.
+        return Task.FromResult<ResourceControllerResult>(null);
     }
 
     public Task<ResourceControllerResult> StatusModifiedAsync(V1Alpha1DatabaseEntity resource)
     {
-        //return Task.FromResult<ResourceControllerResult>(null); // This wont trigger a requeue.
-        return Task.FromResult(ResourceControllerResult.RequeueEvent(TimeSpan.FromSeconds(15))); // This will requeue the event in 15 seconds.
+        return Task.FromResult<ResourceControllerResult>(null);
     }
 
     public Task<ResourceControllerResult> DeletedAsync(V1Alpha1DatabaseEntity resource)
     {
-        //return Task.FromResult<ResourceControllerResult>(null); // This wont trigger a requeue.
-        return Task.FromResult(ResourceControllerResult.RequeueEvent(TimeSpan.FromSeconds(15))); // This will requeue the event in 15 seconds.
+        return Task.FromResult<ResourceControllerResult>(null);
     }
 
 }

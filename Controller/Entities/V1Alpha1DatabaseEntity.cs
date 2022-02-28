@@ -23,5 +23,4 @@ public class V1Alpha1DatabaseEntity : CustomKubernetesEntity
     public string? UsernameSecretName { get; set; }
     [Required]
     public string? PasswordSecretName { get; set; }
-    public string? Test { get; set; }
 }
