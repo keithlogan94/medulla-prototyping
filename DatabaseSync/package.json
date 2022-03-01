@@ -1,0 +1,9 @@
+{
+  "name": "database-sync",
+  "version": "0.0.0",
+  "description": "DatabaseSync",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  }
+}
