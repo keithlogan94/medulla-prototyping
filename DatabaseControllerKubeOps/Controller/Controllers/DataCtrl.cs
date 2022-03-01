@@ -3,8 +3,8 @@ using KubeOps.Operator.Controller;
 using KubeOps.Operator.Rbac;
 using DatabaseControllerKubeOps.Controller.Entities;
 using KubeOps.Operator.Controller.Results;
-using k8s.Models;
 using k8s;
+using k8s.Models;
 
 namespace DatabaseControllerKubeOps.Controller.Controllers;
 
