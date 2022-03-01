@@ -2,8 +2,7 @@
 kind: Data
 metadata:
   name: test-1
-spec:
-  databases:
+databases:
   - name: test
     host: my-host.app
     dialect: mysql
@@ -12,10 +11,32 @@ spec:
     models:
       - name: User
         columns:
-        - columnName: firstName
-          type: string
-          allowNull: false
-
-
-
-
+          - columnName: firstName
+            type: string
+            allowNull: false
+            defaultValue: ""
+            autoIncrement: true
+            primaryKey: true
+            field: "test_field"
+            unique: "uniqueField"
+            comment: "This is a Test"
+      - name: Account
+        columns:
+          - columnName: firstName
+            type: string
+            allowNull: false
+            defaultValue: ""
+            autoIncrement: true
+            primaryKey: true
+            field: "test_field"
+            unique: "uniqueField"
+            comment: "This is a Test"
+          - columnName: lastName
+            type: string
+            allowNull: false
+            defaultValue: ""
+            autoIncrement: true
+            primaryKey: true
+            field: "test_field"
+            unique: "uniqueField"
+            comment: "This is a Test"
