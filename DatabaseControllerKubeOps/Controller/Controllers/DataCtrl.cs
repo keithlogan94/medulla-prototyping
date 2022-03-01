@@ -9,17 +9,9 @@ using k8s.Models;
 namespace DatabaseControllerKubeOps.Controller.Controllers;
 
 
-[EntityRbac(typeof(V1Alpha1DataEntity), Verbs = RbacVerb.All)]
-public class DataCtrl : IResourceController<V1Alpha1DataEntity>
+internal class OnChange
 {
-    
-    public Task<ResourceControllerResult> CreatedAsync(V1Alpha1DataEntity resource)
-    {
-        Console.WriteLine("Created");
-        return Task.FromResult<ResourceControllerResult>(null);
-    }
-
-    public Task<ResourceControllerResult> ReconcileAsync(V1Alpha1DataEntity resource)
+    public static async void UpdateDatabase()
     {
         var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
         var client = new Kubernetes(config);
@@ -28,8 +20,12 @@ public class DataCtrl : IResourceController<V1Alpha1DataEntity>
         {
             Metadata = new V1ObjectMeta
             {
-                Name = "database-sync",
-                NamespaceProperty = "default"
+                Name = "database-sync-k1235",
+                NamespaceProperty = "default",
+                Labels = new Dictionary<string, string>
+                {
+                    { "app", "database-sync" }
+                }
             },
             Spec = new V1PodSpec
             {
@@ -45,15 +41,62 @@ public class DataCtrl : IResourceController<V1Alpha1DataEntity>
         };
 
         var result = client.CreateNamespacedPod(pod, "default");
-        Console.WriteLine(result);
 
+
+        V1Service service = new V1Service()
+        {
+            ApiVersion = $"{V1Service.KubeGroup}/{V1Service.KubeApiVersion}",
+            Kind = V1Service.KubeKind,
+            Metadata = new V1ObjectMeta()
+            {
+                Name = "database-sync-service",
+            },
+            Spec = new V1ServiceSpec
+            {
+                Type = "LoadBalancer",
+                Selector = new Dictionary<string, string>
+                {
+                    ["app"] = "database-sync",
+                },
+                Ports = new List<V1ServicePort> {
+                    new V1ServicePort {
+                        Protocol = "TCP",
+                        Port = 3000,
+                        TargetPort = 3000,
+                    },
+                }
+            }
+        };
+
+        client.CreateNamespacedService(service, "default");
+
+        Console.WriteLine(result);
+    }
+}
+
+
+[EntityRbac(typeof(V1Alpha1DataEntity), Verbs = RbacVerb.All)]
+public class DataCtrl : IResourceController<V1Alpha1DataEntity>
+{
+    
+    public Task<ResourceControllerResult> CreatedAsync(V1Alpha1DataEntity resource)
+    {
+        Console.WriteLine("Created");
+        OnChange.UpdateDatabase();
+        return Task.FromResult<ResourceControllerResult>(null);
+    }
+
+    public Task<ResourceControllerResult> ReconcileAsync(V1Alpha1DataEntity resource)
+    {
         Console.WriteLine("ReconcileAsync");
+        OnChange.UpdateDatabase();
         return Task.FromResult<ResourceControllerResult>(null);
     }
 
     public Task<ResourceControllerResult> StatusModifiedAsync(V1Alpha1DataEntity resource)
     {
         Console.WriteLine("StatusModifiedAsync");
+        OnChange.UpdateDatabase();
         return Task.FromResult<ResourceControllerResult>(null);
     }
 
