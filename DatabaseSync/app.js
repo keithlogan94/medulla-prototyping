@@ -1,3 +1,8 @@
-'use strict';
+const express = require('express')
+const app = express()
 
-console.log('Hello world');
+app.get('/listen-for-database-schema', function (req, res) {
+    res.send('Got database schema')
+})
+
+app.listen(3000)

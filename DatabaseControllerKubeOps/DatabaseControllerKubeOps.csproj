@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="KubeOps" Version="6.2.13" />
+    <PackageReference Include="KubernetesClient" Version="7.1.3-g341580fb9b" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
   </ItemGroup>
 
