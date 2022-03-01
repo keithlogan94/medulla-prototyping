@@ -7,7 +7,7 @@ rules:
   - medulla.recro.com
   - coordination.k8s.io
   resources:
-  - databases
+  - data
   - leases
   verbs:
   - '*'

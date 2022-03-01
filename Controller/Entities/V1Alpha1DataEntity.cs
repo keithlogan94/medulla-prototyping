@@ -1,9 +1,36 @@
 ﻿using k8s.Models;
 using KubeOps.Operator.Entities;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+using KubeOps.Operator.Entities.Annotations;
 
 namespace DatabaseControllerKubeOps.Controller.Entities;
+
+
+
+public struct DatabaseSpec
+{
+    [Required]
+    public string? Name { get; set; }
+    [Required]
+    public string? Host { get; set; }
+    [Required]
+    public string? Dialect { get; set; }
+    [Required]
+    public string? UsernameSecretName { get; set; }
+    [Required]
+    public string? PasswordSecretName { get; set; }
+    [Required]
+    public List<ModelSpec> Models { get; set; }
+}
+
+public struct ModelSpec
+{
+    [Required]
+    public string? Name { get; set; }
+    [Required]
+    public List<ColumnSpec>? Columns { get; set; }
+}
+
+
 
 public struct ValidateSpec
 {
@@ -43,16 +70,13 @@ public struct ColumnSpec
 }
 
 
-[Description("A CustomResourceDefinition which allows building a database table in Medulla.")]
+[Description("A CustomResourceDefinition which allows building with data in Medulla.")]
 [KubernetesEntity(
     ApiVersion = "v1alpha1",
-    Kind = "DatabaseTable",
+    Kind = "Data",
     Group = "medulla.recro.com",
-    PluralName = "databasetables")]
-public class V1Alpha1DatabaseTableEntity : CustomKubernetesEntity
+    PluralName = "data")]
+public class V1Alpha1DataEntity : CustomKubernetesEntity
 {
-    [Required]
-    public string? Name { get; set; }
-    [Required]
-    public List<ColumnSpec>? Columns { get; set; }
+    public List<DatabaseSpec> Databases { get; set; }
 }
