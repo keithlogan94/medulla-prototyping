@@ -20,7 +20,7 @@ internal class OnChange
         {
             Metadata = new V1ObjectMeta
             {
-                Name = "database-sync-k1235",
+                Name = "database-sync",
                 NamespaceProperty = "default",
                 Labels = new Dictionary<string, string>
                 {
