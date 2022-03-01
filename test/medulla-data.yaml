@@ -1,0 +1,21 @@
+﻿apiVersion: medulla.recro.com/v1alpha1
+kind: Data
+metadata:
+  name: test-1
+spec:
+  databases:
+  - name: test
+    host: my-host.app
+    dialect: mysql
+    usernameSecretName: test-secret
+    passwordSecretName: test-secret
+    models:
+      - name: User
+        columns:
+        - columnName: firstName
+          type: string
+          allowNull: false
+
+
+
+
