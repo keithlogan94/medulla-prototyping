@@ -26,7 +26,7 @@ internal class OnChange
     public static async void UpdateDatabase(V1Alpha1DataEntity entity)
     {
         var unique = OnChange.RandomString();
-        var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
+        var config = KubernetesClientConfiguration.InClusterConfig();
         var client = new Kubernetes(config);
 
         var pod = new V1Pod
