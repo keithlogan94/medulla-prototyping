@@ -16,4 +16,4 @@ RUN chown operator-user:k8s-operator -R .
 
 USER operator-user
 
-ENTRYPOINT [ "dotnet", "<<TARGETFILE>>" ]
+ENTRYPOINT [ "dotnet", "DatabaseControllerKubeOps.dll" ]

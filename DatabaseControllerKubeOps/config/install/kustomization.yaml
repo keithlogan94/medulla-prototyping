@@ -9,7 +9,7 @@ resources:
 - ../operator
 images:
 - name: operator
-  newName: public-docker-image-path
+  newName: keithlogan94/controller
   newTag: latest
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
