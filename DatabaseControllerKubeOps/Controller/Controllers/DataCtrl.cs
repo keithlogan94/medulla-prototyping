@@ -5,14 +5,27 @@ using DatabaseControllerKubeOps.Controller.Entities;
 using KubeOps.Operator.Controller.Results;
 using k8s;
 using k8s.Models;
+using System.Text.Json;
+using System.Threading;
 
 namespace DatabaseControllerKubeOps.Controller.Controllers;
 
 
 internal class OnChange
 {
-    public static async void UpdateDatabase()
+
+    private static Random random = new Random();
+
+    public static string RandomString(int length = 5)
     {
+        string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToLower();
+        return new string(Enumerable.Repeat(chars, length)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
+    }
+
+    public static async void UpdateDatabase(V1Alpha1DataEntity entity)
+    {
+        var unique = OnChange.RandomString();
         var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
         var client = new Kubernetes(config);
 
@@ -20,11 +33,11 @@ internal class OnChange
         {
             Metadata = new V1ObjectMeta
             {
-                Name = "database-sync",
+                Name = "database-sync-" + unique,
                 NamespaceProperty = "default",
                 Labels = new Dictionary<string, string>
                 {
-                    { "app", "database-sync" }
+                    { "app", "database-sync-" + unique }
                 }
             },
             Spec = new V1PodSpec
@@ -49,14 +62,14 @@ internal class OnChange
             Kind = V1Service.KubeKind,
             Metadata = new V1ObjectMeta()
             {
-                Name = "database-sync-service",
+                Name = "database-sync-service-" + unique,
             },
             Spec = new V1ServiceSpec
             {
                 Type = "LoadBalancer",
                 Selector = new Dictionary<string, string>
                 {
-                    ["app"] = "database-sync",
+                    ["app"] = "database-sync-" + unique,
                 },
                 Ports = new List<V1ServicePort> {
                     new V1ServicePort {
@@ -71,6 +84,32 @@ internal class OnChange
         client.CreateNamespacedService(service, "default");
 
         Console.WriteLine(result);
+
+        var values = new Dictionary<string, string>
+        {
+            { "data", JsonSerializer.Serialize(entity) },
+        };
+        var content = new FormUrlEncodedContent(values);
+
+        HttpClient httpClient = new HttpClient();
+
+        while (true)
+        {
+            try
+            {
+                var response = await httpClient.PostAsync("http://database-sync-service-" + unique + "/listen-for-database-schema", content);
+                var responseString = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(responseString);
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("Sleeping for 5 seconds until trying again");
+                Thread.Sleep(5000);
+            }
+        }
+        
     }
 }
 
@@ -82,21 +121,21 @@ public class DataCtrl : IResourceController<V1Alpha1DataEntity>
     public Task<ResourceControllerResult> CreatedAsync(V1Alpha1DataEntity resource)
     {
         Console.WriteLine("Created");
-        OnChange.UpdateDatabase();
+        OnChange.UpdateDatabase(resource);
         return Task.FromResult<ResourceControllerResult>(null);
     }
 
     public Task<ResourceControllerResult> ReconcileAsync(V1Alpha1DataEntity resource)
     {
         Console.WriteLine("ReconcileAsync");
-        OnChange.UpdateDatabase();
+        OnChange.UpdateDatabase(resource);
         return Task.FromResult<ResourceControllerResult>(null);
     }
 
     public Task<ResourceControllerResult> StatusModifiedAsync(V1Alpha1DataEntity resource)
     {
         Console.WriteLine("StatusModifiedAsync");
-        OnChange.UpdateDatabase();
+        OnChange.UpdateDatabase(resource);
         return Task.FromResult<ResourceControllerResult>(null);
     }
 
