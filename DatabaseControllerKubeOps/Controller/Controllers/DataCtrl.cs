@@ -28,7 +28,7 @@ internal class OnChange
         {
             try
             {
-                var response = await httpClient.PostAsync("http://database-sync-service/listen-for-database-schema", content);
+                var response = await httpClient.PostAsync("http://database-sync-service:3000/listen-for-database-schema", content);
                 var responseString = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(responseString);
                 break;
