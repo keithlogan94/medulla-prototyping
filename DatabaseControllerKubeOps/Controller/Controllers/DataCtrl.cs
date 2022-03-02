@@ -14,15 +14,6 @@ namespace DatabaseControllerKubeOps.Controller.Controllers;
 internal class OnChange
 {
 
-    private static Random random = new Random();
-
-    public static string RandomString(int length = 5)
-    {
-        string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToLower();
-        return new string(Enumerable.Repeat(chars, length)
-            .Select(s => s[random.Next(s.Length)]).ToArray());
-    }
-
     public static async void UpdateDatabase(V1Alpha1DataEntity entity)
     {
         var values = new Dictionary<string, string>

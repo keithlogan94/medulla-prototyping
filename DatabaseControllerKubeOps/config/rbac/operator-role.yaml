@@ -5,11 +5,9 @@ metadata:
 rules:
 - apiGroups:
   - medulla.recro.com
-  - ''
   - coordination.k8s.io
   resources:
   - data
-  - pods
   - leases
   verbs:
   - '*'
@@ -29,14 +27,6 @@ rules:
   verbs:
   - get
   - list
-- apiGroups:
-  - ''
-  resources:
-  - pods/status
-  verbs:
-  - get
-  - patch
-  - update
 - apiGroups:
   - apps
   resources:
