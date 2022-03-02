@@ -34,7 +34,7 @@ internal class OnChange
             Metadata = new V1ObjectMeta
             {
                 Name = "database-sync-" + unique,
-                NamespaceProperty = "default",
+                NamespaceProperty = "databasecontrollerkubeops-system",
                 Labels = new Dictionary<string, string>
                 {
                     { "app", "database-sync-" + unique }
@@ -63,6 +63,7 @@ internal class OnChange
             Metadata = new V1ObjectMeta()
             {
                 Name = "database-sync-service-" + unique,
+                NamespaceProperty = "databasecontrollerkubeops-system"
             },
             Spec = new V1ServiceSpec
             {

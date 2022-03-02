@@ -4,9 +4,12 @@ metadata:
   name: operator-role
 rules:
 - apiGroups:
+  - ""
   - medulla.recro.com
   - coordination.k8s.io
   resources:
+  - pods
+  - services
   - data
   - leases
   verbs:
@@ -15,6 +18,8 @@ rules:
   - ''
   resources:
   - events
+  - pods
+  - services
   verbs:
   - create
   - get
@@ -31,6 +36,8 @@ rules:
   - apps
   resources:
   - deployments/status
+  - pods
+  - services
   verbs:
   - get
   - patch
