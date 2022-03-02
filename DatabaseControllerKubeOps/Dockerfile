@@ -1,22 +1,19 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+# Build the operator
+FROM mcr.microsoft.com/dotnet/sdk:latest as build
+WORKDIR /operator
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+COPY ./ ./
+RUN dotnet publish -c Release -o out DatabaseControllerKubeOps.csproj
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["DatabaseControllerKubeOps/DatabaseControllerKubeOps.csproj", "DatabaseControllerKubeOps/"]
-RUN dotnet restore "DatabaseControllerKubeOps/DatabaseControllerKubeOps.csproj"
-COPY . .
-WORKDIR "/src/DatabaseControllerKubeOps"
-RUN dotnet build "DatabaseControllerKubeOps.csproj" -c Release -o /app/build
+# The runner for the application
+FROM mcr.microsoft.com/dotnet/aspnet:latest as final
 
-FROM build AS publish
-RUN dotnet publish "DatabaseControllerKubeOps.csproj" -c Release -o /app/publish
+RUN addgroup k8s-operator && useradd -G k8s-operator operator-user
 
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "DatabaseControllerKubeOps.dll"]
+WORKDIR /operator
+COPY --from=build /operator/out/ ./
+RUN chown operator-user:k8s-operator -R .
+
+USER operator-user
+
+ENTRYPOINT [ "dotnet", "<<TARGETFILE>>" ]
