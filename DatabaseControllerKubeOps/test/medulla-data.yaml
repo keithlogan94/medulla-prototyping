@@ -35,6 +35,14 @@ databases:
             field: "favorite_color"
             unique: "favoriteColor"
             comment: "Favorite Color"
+          - columnName: email
+            type: VARCHAR(250)
+            allowNull: true
+            defaultValue: "test@test.com"
+            primaryKey: true
+            field: "email"
+            unique: "email"
+            comment: "This is the email field"
       - name: Account
         columns:
           - columnName: firstName

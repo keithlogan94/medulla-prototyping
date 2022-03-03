@@ -64,6 +64,14 @@ async function syncDatabase(data) {
 
             }
 
+
+            keys = Object.keys(initObject);
+            for (let keysIndex = 0; keysIndex < keys.length; keysIndex++) {
+                if (typeof initObject[keys[keysIndex]] !== "object") {
+                    delete initObject[keys[keysIndex]]
+                }
+            }
+
             console.log("initializing table", Models[modelIndex].Name)
             console.log({ initObject })
 
@@ -81,7 +89,12 @@ async function syncDatabase(data) {
 
 
 app.post('/listen-for-database-schema', async function (req, res) {
-    await syncDatabase(req.body)
+    try {
+        await syncDatabase(req.body)
+    } catch (err) {
+        console.error(err);
+        return res.send(err);
+    }
     res.send('Synced database')
 })
 
