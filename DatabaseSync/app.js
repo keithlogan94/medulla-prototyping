@@ -80,12 +80,7 @@ async function syncDatabase(data) {
 
             await Model.sync({ force: true })
 
-
-
         }
-
-
-
 
 
     }
