@@ -3,40 +3,72 @@ kind: Data
 metadata:
   name: test-1
 databases:
-  - name: test
-    host: my-host.app
+  - name: medulla
+    host: mysql-service
     dialect: mysql
-    usernameSecretName: test-secret
-    passwordSecretName: test-secret
+    usernameSecretName: user
+    passwordSecretName: test
     models:
       - name: User
         columns:
           - columnName: firstName
-            type: string
+            type: VARCHAR(100)
             allowNull: false
-            defaultValue: ""
-            autoIncrement: true
+            defaultValue: "1"
             primaryKey: true
-            field: "test_field"
-            unique: "uniqueField"
-            comment: "This is a Test"
-      - name: Account
-        columns:
-          - columnName: firstName
-            type: string
-            allowNull: false
-            defaultValue: ""
-            autoIncrement: true
-            primaryKey: true
-            field: "test_field"
+            field: "first_name"
             unique: "uniqueField"
             comment: "This is a Test"
           - columnName: lastName
-            type: string
+            type: VARCHAR(100)
+            allowNull: false
+            defaultValue: "1"
+            primaryKey: true
+            field: "last_name"
+            unique: "anotherUnique"
+            comment: "This is a Test"
+          - columnName: favoriteColor
+            type: VARCHAR(100)
+            allowNull: true
+            defaultValue: "BLUE"
+            primaryKey: true
+            field: "favorite_color"
+            unique: "favoriteColor"
+            comment: "Favorite Color"
+      - name: Account
+        columns:
+          - columnName: firstName
+            type: VARCHAR(100)
             allowNull: false
             defaultValue: ""
-            autoIncrement: true
             primaryKey: true
-            field: "test_field"
+            field: "first_name"
             unique: "uniqueField"
             comment: "This is a Test"
+          - columnName: lastName
+            type: VARCHAR(200)
+            allowNull: false
+            defaultValue: ""
+            primaryKey: true
+            field: "last_name"
+            unique: "uniqueField"
+            comment: "This is a Test"
+
+      - name: Products
+        columns:
+          - columnName: productName
+            type: VARCHAR(100)
+            allowNull: false
+            defaultValue: ""
+            primaryKey: true
+            field: "product_name"
+            unique: "uniqueField"
+            comment: "Product name for product"
+          - columnName: productId
+            type: INT(11)
+            allowNull: false
+            defaultValue: "1"
+            primaryKey: true
+            field: "product_id"
+            unique: "uniqueField"
+            comment: "Product id for Product"

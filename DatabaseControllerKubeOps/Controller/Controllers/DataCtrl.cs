@@ -24,23 +24,10 @@ internal class OnChange
 
         HttpClient httpClient = new HttpClient();
 
-        while (true)
-        {
-            try
-            {
-                var response = await httpClient.PostAsync("http://database-sync-service:3000/listen-for-database-schema", content);
-                var responseString = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(responseString);
-                break;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                Console.WriteLine("Sleeping for 5 seconds until trying again");
-                Thread.Sleep(5000);
-            }
-        }
-        
+        var response = await httpClient.PostAsync("http://database-sync-service:3000/listen-for-database-schema", content);
+        var responseString = await response.Content.ReadAsStringAsync();
+        Console.WriteLine(responseString);
+
     }
 }
 
