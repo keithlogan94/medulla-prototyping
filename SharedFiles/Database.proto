@@ -138,7 +138,6 @@ message Filter {
 message QueryModelRequest {
 	string database = 1;
 	string model = 2;
-	bool getAll = 3;
 	bool withFilter = 4;
 	repeated Filter filters = 5;
 }
