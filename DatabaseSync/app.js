@@ -36,7 +36,7 @@ async function syncDatabase(data) {
         for (let modelIndex = 0; modelIndex < Models.length; modelIndex++) {
             console.log(Models[modelIndex]);
 
-            let initObject = { firstName: "" };
+            let initObject = { };
             for (let columnIndex = 0; columnIndex < Models[modelIndex].Columns.length; columnIndex++) {
                 initObject[Models[modelIndex].Columns[columnIndex].ColumnName]
                     = Models[modelIndex].Columns[columnIndex];

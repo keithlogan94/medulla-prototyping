@@ -11,30 +11,6 @@ databases:
     models:
       - name: User
         columns:
-          - columnName: firstName
-            type: VARCHAR(100)
-            allowNull: false
-            defaultValue: "1"
-            primaryKey: true
-            field: "first_name"
-            unique: "uniqueField"
-            comment: "This is a Test"
-          - columnName: lastName
-            type: VARCHAR(100)
-            allowNull: false
-            defaultValue: "1"
-            primaryKey: true
-            field: "last_name"
-            unique: "anotherUnique"
-            comment: "This is a Test"
-          - columnName: favoriteColor
-            type: VARCHAR(100)
-            allowNull: true
-            defaultValue: "BLUE"
-            primaryKey: true
-            field: "favorite_color"
-            unique: "favoriteColor"
-            comment: "Favorite Color"
           - columnName: email
             type: VARCHAR(250)
             allowNull: true
@@ -45,33 +21,17 @@ databases:
             comment: "This is the email field"
       - name: Account
         columns:
-          - columnName: firstName
-            type: VARCHAR(100)
-            allowNull: false
+          - columnName: phoneNumber
+            type: VARCHAR(50)
+            allowNull: true
             defaultValue: ""
-            primaryKey: true
-            field: "first_name"
+            primaryKey: false
+            field: "phone_number"
             unique: "uniqueField"
-            comment: "This is a Test"
-          - columnName: lastName
-            type: VARCHAR(200)
-            allowNull: false
-            defaultValue: ""
-            primaryKey: true
-            field: "last_name"
-            unique: "uniqueField"
-            comment: "This is a Test"
+            comment: "Stores the phone number for the user"
 
       - name: Products
         columns:
-          - columnName: productName
-            type: VARCHAR(100)
-            allowNull: false
-            defaultValue: ""
-            primaryKey: true
-            field: "product_name"
-            unique: "uniqueField"
-            comment: "Product name for product"
           - columnName: productId
             type: INT(11)
             allowNull: false
@@ -80,3 +40,73 @@ databases:
             field: "product_id"
             unique: "uniqueField"
             comment: "Product id for Product"
+
+      - name: Files
+        columns:
+          - columnName: fileName
+            type: VARCHAR(100)
+            allowNull: false
+            defaultValue: ""
+            primaryKey: true
+            field: "file_name"
+            unique: "uniqueField"
+            comment: "File"
+        
+
+      
+      - name: TestTable
+        columns:
+          - columnName: testColumn
+            type: VARCHAR(100)
+            allowNull: false
+            defaultValue: ""
+            primaryKey: true
+            field: "test_column"
+            unique: "test"
+            comment: "This is a test"
+          
+          - columnName: phoneNumber
+            type: VARCHAR(100)
+            allowNull: true
+            defaultValue: "555-555-5555"
+            primaryKey: false
+            field: "phone_number"
+            unique: "phoneNumber"
+            comment: "This is a phone number field"
+
+          - columnName: phoneNumber0
+            type: VARCHAR(100)
+            allowNull: true
+            defaultValue: "555-555-5555"
+            primaryKey: false
+            field: "phone_number0"
+            unique: "phoneNumber"
+            comment: "This is a phone number field"
+
+          - columnName: phoneNumber1
+            type: VARCHAR(100)
+            allowNull: true
+            defaultValue: "555-555-5555"
+            primaryKey: false
+            field: "phone_number1"
+            unique: "phoneNumber"
+            comment: "This is a phone number field"
+
+          - columnName: phoneNumber2
+            type: VARCHAR(100)
+            allowNull: true
+            defaultValue: "555-555-5555"
+            primaryKey: false
+            field: "phone_number2"
+            unique: "phoneNumber"
+            comment: "This is a phone number field"
+
+          - columnName: phoneNumber3
+            type: VARCHAR(100)
+            allowNull: true
+            defaultValue: "555-555-5555"
+            primaryKey: false
+            field: "phone_number3"
+            unique: "phoneNumber"
+            comment: "This is a phone number field"
+          
