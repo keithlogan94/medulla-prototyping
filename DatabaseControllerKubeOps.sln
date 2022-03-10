@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseControllerKubeOps",
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "DatabaseSync", "DatabaseSync\DatabaseSync.njsproj", "{929764A7-F21C-4184-867D-E0D4CDFBE6F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseGrpcService", "DatabaseGrpcService\DatabaseGrpcService.csproj", "{33FEE3AF-CB07-4E44-B6F0-FC326AA9D2F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoBuffers", "ProtoBuffers\ProtoBuffers.csproj", "{4F930E8D-F944-4389-9A64-9BD49D3C527C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{929764A7-F21C-4184-867D-E0D4CDFBE6F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{929764A7-F21C-4184-867D-E0D4CDFBE6F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{929764A7-F21C-4184-867D-E0D4CDFBE6F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33FEE3AF-CB07-4E44-B6F0-FC326AA9D2F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33FEE3AF-CB07-4E44-B6F0-FC326AA9D2F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33FEE3AF-CB07-4E44-B6F0-FC326AA9D2F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33FEE3AF-CB07-4E44-B6F0-FC326AA9D2F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F930E8D-F944-4389-9A64-9BD49D3C527C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F930E8D-F944-4389-9A64-9BD49D3C527C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F930E8D-F944-4389-9A64-9BD49D3C527C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F930E8D-F944-4389-9A64-9BD49D3C527C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
