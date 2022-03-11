@@ -1,6 +1,12 @@
 ﻿
+syntax = "proto3";
 
-service Database {
+option csharp_namespace = "GrpcDatabase";
+
+package database;
+
+
+service DatabaseSvc {
   // Create databases rpcs
   rpc CreateDatabase (CreateDatabaseRequest) returns (CreateDatabaseResponse) {}
   rpc GetDatabases (GetDatabasesRequest) returns (GetDatabasesResponse) {}
@@ -33,7 +39,7 @@ message CreateDatabaseRequest {
 
 message CreateDatabaseResponse {
 	string uuid = 1;
-	Database database = 1;
+	Database database = 2;
 }
 
 message GetDatabasesRequest {
@@ -46,12 +52,12 @@ message GetDatabasesResponse {
 
 message UpdateDatabasesRequest {
 	string uuid = 1;
-	Database database = 1;
+	Database database = 2;
 }
 
 message UpdateDatabasesResponse {
 	string uuid = 1;
-	Database database = 1;
+	Database database = 2;
 }
 
 message DeleteDatabasesRequest {
@@ -80,7 +86,7 @@ message Model {
 	string name = 1;
 	// Security: querying user must contain role
 	string role = 2;
-	repeated Column = 3;
+	repeated Column column = 3;
 }
 
 

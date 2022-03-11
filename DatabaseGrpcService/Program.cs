@@ -1,6 +1,17 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using DatabaseGrpcService;
+using Microsoft.AspNetCore;
 
-app.MapGet("/", () => "Hello World!");
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        BuildWebHost(args).Run();
+    }
 
-app.Run();
+    public static IWebHost BuildWebHost(string[] args)
+    {
+        return WebHost.CreateDefaultBuilder(args)
+            .UseStartup<Startup>()
+            .Build();
+    }
+}
