@@ -2,12 +2,17 @@ package database
 
 import (
 	context2 "context"
+	"database_service/kubernetes"
 )
 
 type Server struct {
 }
 
 func (s *Server) CreateDatabase(ctx context2.Context, request *CreateDatabaseRequest) (*CreateDatabaseResponse, error) {
+	err := kubernetes.CreateDatabase(request)
+	if err != nil {
+		panic(err)
+	}
 	var res = CreateDatabaseResponse{
 		Database: &Database{
 			Name:      "test",
@@ -20,7 +25,6 @@ func (s *Server) CreateDatabase(ctx context2.Context, request *CreateDatabaseReq
 }
 
 func (s *Server) GetDatabases(ctx context2.Context, request *GetDatabasesRequest) (*GetDatabasesResponse, error) {
-
 	//TODO implement me
 	panic("implement me")
 }
