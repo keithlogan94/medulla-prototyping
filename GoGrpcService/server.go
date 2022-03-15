@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database_service/database"
 	"fmt"
 	"log"
 	"net"
@@ -14,11 +15,10 @@ func main() {
 		log.Fatal("Failed to create Listener")
 	}
 
+	s := database.Server{}
+
 	grpcServer := grpc.NewServer()
-
-	// s := Server()
-
-	// dbService.RegisterDatabaseServiceServer(grpcServer, &s)
+	database.RegisterDatabaseSvcServer(grpcServer, &s)
 
 	fmt.Println("Serving golang grpc server on port 9000")
 	if err := grpcServer.Serve(lis); err != nil {
