@@ -8,8 +8,15 @@ type Server struct {
 }
 
 func (s *Server) CreateDatabase(ctx context2.Context, request *CreateDatabaseRequest) (*CreateDatabaseResponse, error) {
-	//TODO implement me
-	panic("implement me")
+	var res = CreateDatabaseResponse{
+		Database: &Database{
+			Name:      "test",
+			Role:      "test role",
+			Collation: "test",
+			Dialect:   "mysql",
+		},
+	}
+	return &res, nil
 }
 
 func (s *Server) GetDatabases(ctx context2.Context, request *GetDatabasesRequest) (*GetDatabasesResponse, error) {
