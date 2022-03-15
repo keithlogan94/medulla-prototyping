@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nIpbgcq6eQGVOKSgyezE0DQZisd5EtwC62VePz65wU+kM7isInStBwVofKs+aGX1vhLtQXff0B3gDuItjNVLYg==",
+  "dgSpecHash": "fcinv2z7Z4VrK5q4B/XH483lgsXFyFnehuhXayvk+pC+LHrx1dZVfebcybS0mgH+uWJzgN2Lm9HsMWn2+B72dg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\keith\\source\\repos\\DatabaseControllerKubeOps\\DatabaseGrpcService\\DatabaseGrpcService.csproj",
+  "projectFilePath": "C:\\Users\\keith\\projects\\recro\\medulla-prototyping\\DatabaseGrpcService\\DatabaseGrpcService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\keith\\.nuget\\packages\\google.protobuf\\3.20.0-rc1\\google.protobuf.3.20.0-rc1.nupkg.sha512",
     "C:\\Users\\keith\\.nuget\\packages\\grpc.aspnetcore.server\\2.44.0-pre1\\grpc.aspnetcore.server.2.44.0-pre1.nupkg.sha512",

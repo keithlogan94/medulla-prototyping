@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\keith\\source\\repos\\DatabaseControllerKubeOps\\ProtoBuffers\\ProtoBuffers.csproj": {}
+    "C:\\Users\\keith\\projects\\recro\\medulla-prototyping\\ProtoBuffers\\ProtoBuffers.csproj": {}
   },
   "projects": {
-    "C:\\Users\\keith\\source\\repos\\DatabaseControllerKubeOps\\ProtoBuffers\\ProtoBuffers.csproj": {
+    "C:\\Users\\keith\\projects\\recro\\medulla-prototyping\\ProtoBuffers\\ProtoBuffers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\keith\\source\\repos\\DatabaseControllerKubeOps\\ProtoBuffers\\ProtoBuffers.csproj",
+        "projectUniqueName": "C:\\Users\\keith\\projects\\recro\\medulla-prototyping\\ProtoBuffers\\ProtoBuffers.csproj",
         "projectName": "ProtoBuffers",
-        "projectPath": "C:\\Users\\keith\\source\\repos\\DatabaseControllerKubeOps\\ProtoBuffers\\ProtoBuffers.csproj",
+        "projectPath": "C:\\Users\\keith\\projects\\recro\\medulla-prototyping\\ProtoBuffers\\ProtoBuffers.csproj",
         "packagesPath": "C:\\Users\\keith\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\keith\\source\\repos\\DatabaseControllerKubeOps\\ProtoBuffers\\obj\\",
+        "outputPath": "C:\\Users\\keith\\projects\\recro\\medulla-prototyping\\ProtoBuffers\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Programs\\Visual Studio Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\keith\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\keith\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

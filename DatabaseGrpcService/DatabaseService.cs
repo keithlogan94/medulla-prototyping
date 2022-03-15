@@ -8,13 +8,12 @@
             _logger = logger;
         }
 
-        public override Task<GrpcDatabase.CreateDatabaseResponse> CreateDatabase(GrpcDatabase.CreateDatabaseRequest request, Grpc.Core.ServerCallContext context)
+        public override async Task<GrpcDatabase.CreateDatabaseResponse> CreateDatabase(GrpcDatabase.CreateDatabaseRequest request, Grpc.Core.ServerCallContext context)
         {
-            return Task.FromResult(new GrpcDatabase.CreateDatabaseResponse
-            {
-                Uuid = "test",
-                Database = new GrpcDatabase.Database(),
-            });
+            System.Console.WriteLine("Grpc");
+            return new GrpcDatabase.CreateDatabaseResponse() {
+                
+            };
         }
     }
 }

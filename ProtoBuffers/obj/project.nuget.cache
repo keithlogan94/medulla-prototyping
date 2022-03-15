@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jjEub3zP1l5k9B7K9PZHS3cTMDpomC89NvEYNajdH4cKUQq78yfsv+fbsE0b3r7uZd4df0Dsso4m1JwYaCLSFg==",
+  "dgSpecHash": "9bVYVwUJBUw8ikkCeCSMbIhFt0BjjF29edbhIAMXqNzL3vdL4xyv6U7h1f/v+hAJlBbM9m8xM3pz8HMmEbEbrA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\keith\\source\\repos\\DatabaseControllerKubeOps\\ProtoBuffers\\ProtoBuffers.csproj",
+  "projectFilePath": "C:\\Users\\keith\\projects\\recro\\medulla-prototyping\\ProtoBuffers\\ProtoBuffers.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

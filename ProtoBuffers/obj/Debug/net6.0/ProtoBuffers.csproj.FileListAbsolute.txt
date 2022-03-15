@@ -10,3 +10,15 @@ C:\Users\keith\source\repos\DatabaseControllerKubeOps\ProtoBuffers\obj\Debug\net
 C:\Users\keith\source\repos\DatabaseControllerKubeOps\ProtoBuffers\obj\Debug\net6.0\ProtoBuffers.dll
 C:\Users\keith\source\repos\DatabaseControllerKubeOps\ProtoBuffers\obj\Debug\net6.0\ref\ProtoBuffers.dll
 C:\Users\keith\source\repos\DatabaseControllerKubeOps\ProtoBuffers\obj\Debug\net6.0\ProtoBuffers.pdb
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\bin\Debug\net6.0\ProtoBuffers.deps.json
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\bin\Debug\net6.0\ProtoBuffers.dll
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\bin\Debug\net6.0\ProtoBuffers.pdb
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\obj\Debug\net6.0\ProtoBuffers.csproj.AssemblyReference.cache
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\obj\Debug\net6.0\ProtoBuffers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\obj\Debug\net6.0\ProtoBuffers.AssemblyInfoInputs.cache
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\obj\Debug\net6.0\ProtoBuffers.AssemblyInfo.cs
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\obj\Debug\net6.0\ProtoBuffers.csproj.CoreCompileInputs.cache
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\obj\Debug\net6.0\ProtoBuffers.dll
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\obj\Debug\net6.0\refint\ProtoBuffers.dll
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\obj\Debug\net6.0\ProtoBuffers.pdb
+C:\Users\keith\projects\recro\medulla-prototyping\ProtoBuffers\obj\Debug\net6.0\ref\ProtoBuffers.dll

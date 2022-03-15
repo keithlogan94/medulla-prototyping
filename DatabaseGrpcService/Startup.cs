@@ -5,10 +5,12 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
+            services.AddLogging();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -20,6 +22,7 @@
             {
                 endpoints.MapGrpcService<GreeterService>();
             });
+
         }
     }
 }

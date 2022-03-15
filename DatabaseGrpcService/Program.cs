@@ -11,6 +11,10 @@ public class Program
     public static IWebHost BuildWebHost(string[] args)
     {
         return WebHost.CreateDefaultBuilder(args)
+            .ConfigureLogging(logging =>
+            {
+                logging.AddConsole();
+            })
             .UseStartup<Startup>()
             .Build();
     }
