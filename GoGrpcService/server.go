@@ -16,6 +16,10 @@ func main() {
 
 	grpcServer := grpc.NewServer()
 
+	// s := Server()
+
+	// dbService.RegisterDatabaseServiceServer(grpcServer, &s)
+
 	fmt.Println("Serving golang grpc server on port 9000")
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Failed to Serve grpc server over port :9000", err)
