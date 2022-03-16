@@ -12,6 +12,24 @@ type Database struct {
 	Uuid string
 }
 
+type Column struct {
+	Role         string
+	Name         string
+	Comment      string
+	AllowNull    string
+	Type         string
+	DefaultValue string
+	FieldName    string
+	PrimaryKey   bool
+	Unique       bool
+}
+
+type Model struct {
+	Name    string
+	Role    string
+	Columns []Column
+}
+
 func int32Ptr(i int32) *int32 { return &i }
 
 func CreateDatabase(database *Database) *error {

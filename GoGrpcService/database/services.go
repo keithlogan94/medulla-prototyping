@@ -82,8 +82,9 @@ func (s *Server) DeleteDatabases(ctx context2.Context, request *DeleteDatabasesR
 }
 
 func (s *Server) CreateModel(ctx context2.Context, request *CreateModelRequest) (*CreateModelResponse, error) {
-	//TODO implement me
-	panic("implement me")
+	//var model Model = Model{}
+	//model.Name = request.
+	//	kubernetes.CreateModel()
 }
 
 func (s *Server) GetModels(ctx context2.Context, request *GetModelsRequest) (*GetModelsResponse, error) {
