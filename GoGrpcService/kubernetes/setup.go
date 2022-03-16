@@ -2,12 +2,18 @@ package kubernetes
 
 import (
 	"context"
-	"database_service/database"
+	appsv1 "k8s.io/api/apps/v1"
 	apiv1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-func CreateDatabase(req *database.CreateDatabasesRequest) *error {
+type Database struct {
+	Name string
+}
+
+func int32Ptr(i int32) *int32 { return &i }
+
+func CreateDatabase(req *Database) *error {
 	deploymentClient, deployment := getDeploymentClient(), &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: "demo-deployment",

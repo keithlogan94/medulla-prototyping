@@ -9,7 +9,9 @@ type Server struct {
 }
 
 func (s *Server) CreateDatabase(ctx context2.Context, request *CreateDatabaseRequest) (*CreateDatabaseResponse, error) {
-	err := kubernetes.CreateDatabase(request)
+
+	database := kubernetes.Database{}
+	err := kubernetes.CreateDatabase(&database)
 	if err != nil {
 		panic(err)
 	}
