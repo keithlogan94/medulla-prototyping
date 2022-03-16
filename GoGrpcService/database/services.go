@@ -3,6 +3,7 @@ package database
 import (
 	context2 "context"
 	"database_service/kubernetes"
+	"log"
 )
 
 type Server struct {
@@ -38,7 +39,14 @@ func (s *Server) CreateDatabase(ctx context2.Context, request *CreateDatabaseReq
 }
 
 func (s *Server) GetDatabases(ctx context2.Context, request *GetDatabasesRequest) (*GetDatabasesResponse, error) {
-	panic("implement me")
+	dbs, err := kubernetes.GetDatabases()
+	if err != nil {
+		log.Fatalln(err)
+	}
+	var databaseResponse GetDatabasesResponse = GetDatabasesResponse{
+		Databases: changeKubernetesDatabasesToResponseDatabases(dbs),
+	}
+	return &databaseResponse, nil
 }
 
 func (s *Server) UpdateDatabases(ctx context2.Context, request *UpdateDatabasesRequest) (*UpdateDatabasesResponse, error) {

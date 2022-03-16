@@ -68,3 +68,19 @@ func DeleteDatabases() *error {
 func CreateModel() *error {
 	return nil
 }
+
+func GetModels() *error {
+	return nil
+}
+
+func UpdateModels() *error {
+	return nil
+}
+
+func DeleteModels() *error {
+	return nil
+}
+
+func QueryDatabase() *error {
+	return nil
+}
