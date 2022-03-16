@@ -50,8 +50,19 @@ func (s *Server) GetDatabases(ctx context2.Context, request *GetDatabasesRequest
 }
 
 func (s *Server) UpdateDatabases(ctx context2.Context, request *UpdateDatabasesRequest) (*UpdateDatabasesResponse, error) {
-	//TODO implement me
-	panic("implement me")
+	database := kubernetes.Database{
+		Name: request.Database.Name,
+	}
+	kubernetes.UpdateDatabases(database)
+	res := UpdateDatabasesResponse{
+		Database: &Database{
+			Name:      request.Database.Name,
+			Role:      request.Database.Role,
+			Collation: request.Database.Collation,
+			Dialect:   request.Database.Dialect,
+		},
+	}
+	return &res, nil
 }
 
 func (s *Server) DeleteDatabases(ctx context2.Context, request *DeleteDatabasesRequest) (*DeleteDatabasesResponse, error) {

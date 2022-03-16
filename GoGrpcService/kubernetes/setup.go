@@ -57,7 +57,7 @@ func GetDatabases() ([]Database, *error) {
 	return nil, nil
 }
 
-func UpdateDatabases() *error {
+func UpdateDatabases(Database) *error {
 	return nil
 }
 
