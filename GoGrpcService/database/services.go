@@ -53,7 +53,10 @@ func (s *Server) UpdateDatabases(ctx context2.Context, request *UpdateDatabasesR
 	database := kubernetes.Database{
 		Name: request.Database.Name,
 	}
-	kubernetes.UpdateDatabases(database)
+	err := kubernetes.UpdateDatabases(database)
+	if err != nil {
+		log.Fatalln(err)
+	}
 	res := UpdateDatabasesResponse{
 		Database: &Database{
 			Name:      request.Database.Name,
