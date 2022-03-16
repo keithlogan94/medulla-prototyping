@@ -38,7 +38,6 @@ func (s *Server) CreateDatabase(ctx context2.Context, request *CreateDatabaseReq
 }
 
 func (s *Server) GetDatabases(ctx context2.Context, request *GetDatabasesRequest) (*GetDatabasesResponse, error) {
-	//TODO implement me
 	panic("implement me")
 }
 

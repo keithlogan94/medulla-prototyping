@@ -52,3 +52,19 @@ func CreateDatabase(database *Database) *error {
 	deploymentClient.Create(context.TODO(), deployment, metav1.CreateOptions{})
 	return nil
 }
+
+func GetDatabases() ([]Database, *error) {
+	return nil, nil
+}
+
+func UpdateDatabases() *error {
+	return nil
+}
+
+func DeleteDatabases() *error {
+	return nil
+}
+
+func CreateModel() *error {
+	return nil
+}
