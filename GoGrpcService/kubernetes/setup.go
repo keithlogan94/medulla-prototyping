@@ -13,7 +13,7 @@ type Database struct {
 
 func int32Ptr(i int32) *int32 { return &i }
 
-func CreateDatabase(req *Database) *error {
+func CreateDatabase(database *Database) *error {
 	deploymentClient, deployment := getDeploymentClient(), &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: "demo-deployment",

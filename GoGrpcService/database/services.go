@@ -9,19 +9,30 @@ type Server struct {
 }
 
 func (s *Server) CreateDatabase(ctx context2.Context, request *CreateDatabaseRequest) (*CreateDatabaseResponse, error) {
-
-	database := kubernetes.Database{}
-	err := kubernetes.CreateDatabase(&database)
-	if err != nil {
-		panic(err)
+	database := kubernetes.Database{
+		Name: request.Database.Name,
 	}
-	var res = CreateDatabaseResponse{
-		Database: &Database{
-			Name:      "test",
-			Role:      "test role",
-			Collation: "test",
-			Dialect:   "mysql",
-		},
+	err := kubernetes.CreateDatabase(&database)
+	var res CreateDatabaseResponse
+	if err != nil {
+		res = CreateDatabaseResponse{
+			Database: &Database{
+				Name:      "error",
+				Role:      "error",
+				Collation: "error",
+				Dialect:   "error",
+			},
+		}
+		return &res, nil
+	} else {
+		res = CreateDatabaseResponse{
+			Database: &Database{
+				Name:      request.Database.Name,
+				Role:      request.Database.Role,
+				Collation: request.Database.Collation,
+				Dialect:   request.Database.Dialect,
+			},
+		}
 	}
 	return &res, nil
 }
