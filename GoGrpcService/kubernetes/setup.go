@@ -9,6 +9,7 @@ import (
 
 type Database struct {
 	Name string
+	Uuid string
 }
 
 func int32Ptr(i int32) *int32 { return &i }
@@ -61,7 +62,7 @@ func UpdateDatabases(Database) *error {
 	return nil
 }
 
-func DeleteDatabases() *error {
+func DeleteDatabases(Database) *error {
 	return nil
 }
 

@@ -69,8 +69,16 @@ func (s *Server) UpdateDatabases(ctx context2.Context, request *UpdateDatabasesR
 }
 
 func (s *Server) DeleteDatabases(ctx context2.Context, request *DeleteDatabasesRequest) (*DeleteDatabasesResponse, error) {
-	//TODO implement me
-	panic("implement me")
+	database := kubernetes.Database{
+		Uuid: request.Uuid,
+	}
+	err := kubernetes.DeleteDatabases(database)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return &DeleteDatabasesResponse{
+		Uuid: request.Uuid,
+	}, nil
 }
 
 func (s *Server) CreateModel(ctx context2.Context, request *CreateModelRequest) (*CreateModelResponse, error) {
